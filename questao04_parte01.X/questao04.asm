@@ -28,8 +28,8 @@ START
     GOTO IGUAL
 
 IGUAL
-    MOVFF h'02',h'10'   ; h'02'> h'04' --> resultado colocado na posicao 8 de memoria ram (NUMERO MAIOR)
-    MOVFF h'04',h'08'   ; h'02'< h'04' --> resultado colocado na posicao 4 de memoria ram (NUMERO MENOR)
+    MOVFF h'02',h'10'   ; h'02'> h'04' --> resultado colocado na posicao 8 de memoria ram (NUMEROS IGUAIS)
+    MOVFF h'04',h'08'   ; h'02'< h'04' --> resultado colocado na posicao 4 de memoria ram (NUMEROS IGUAIS)
     MOVF h'06',W        ; coloca o valor da posição 6 de memoria para W
     SUBWF h'10',W       ; W = h'10' - W
     BTFSC STATUS,C      ;testa 6 bit C de status --> RESULTADO = 0 pula uma linha 
