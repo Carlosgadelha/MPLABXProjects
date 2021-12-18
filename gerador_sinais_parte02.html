@@ -8,13 +8,80 @@
 body {color: #000000; background-color: #ffffff; font-family: Monospaced}
 pre {color: #000000; background-color: #ffffff; font-family: Monospaced}
 table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
-.ST0 {color: #009600}
+.highlight-caret-row {background-color: #e9eff8}
+.ST7 {color: #009be1}
+.ST2 {color: #009600}
+.ST3 {color: #99006b}
+.ST5 {color: #00009b; font-family: Monospaced; font-weight: bold}
+.ST1 {color: #ce7b00; background-color: #e9eff8}
+.ST4 {color: #0000ff}
+.ST0 {color: #0000ff; background-color: #e9eff8}
+.ST6 {color: #ce7b00}
 -->
 </style>
 </head>
 <body>
 <table width="100%"><tr><td align="center">C:\Users\carlos\MPLABXProjects\gerador_sinais.X\gerador_sinais_parte02.asm</td></tr></table>
 <pre>
-17 <span class="ST0">o en</span>
+ 1 <span class="ST0">#include</span> <span class="ST1">&quot;p18f4550.inc&quot;</span>
+ 2     <span class="ST2">; Matricula = 500149</span>
+ 3     <span class="ST2">; T = 100 + 100N</span>
+ 4     <span class="ST2">; Como N é o último número da matrícula, N=9</span>
+ 5     <span class="ST2">; T = 100 + 100*9 = 1000us = 1ms</span>
+ 6 <span class="ST3">VARIAVEIS</span> <span class="ST4">UDATA_ACS</span> 0
+ 7       <span class="ST3">ContaPeriodo1ms</span> <span class="ST2">;Variavel para dar um periodo de 1ms</span>
+ 8  
+ 9 <span class="ST3">RES_VECT</span>  <span class="ST4">CODE</span>    0x0000            
+10         <span class="ST5">GOTO</span> <span class="ST3">START</span>
+11 <span class="ST3">MAIN_PROG</span> <span class="ST4">CODE</span>                      
+12 <span class="ST3">START</span>
+13             <span class="ST2">;DETERMINANDO AS PORTAS DE ENTRADA E SAIDA</span>
+14     <span class="ST5">MOVLW</span> <span class="ST3">b</span><span class="ST6">&#39;110001&#39;</span> <span class="ST2">; Move o literal 110001 para o registrador W</span>
+15     <span class="ST5">MOVWF</span> <span class="ST7">TRISD</span> <span class="ST2">; Move o W para o TRISD</span>
+16         <span class="ST2">;1 é para as entradas e 0 para as saidas</span>
+17         <span class="ST2">;Temos que 0, 4 e 5 são entradas</span>
+18         <span class="ST2">;Temos que 1, 2 e 3 são saidas</span>
+19     
+20             <span class="ST2">;GERADOR DE FORMA DE ONDA DA FIGURA</span>
+21     <span class="ST3">LOOP</span> <span class="ST2">; Loop principal</span>
+22         <span class="ST5">bsf</span> <span class="ST7">PORTD</span>,<span class="ST3">RD1</span><span class="ST2">; Seta o bit RD1 da PORTD para 1</span>
+23                 <span class="ST5">CALL</span> <span class="ST3">Periodo1ms</span> <span class="ST2">;Gera um periodo de 1ms</span>
+24                 <span class="ST5">nop</span><span class="ST2">; Consome um tempo de 1us</span>
+25         <span class="ST5">bcf</span> <span class="ST7">PORTD</span>,<span class="ST3">RD1</span> <span class="ST2">; Seta o bit RD1 da PORTD para 0</span>
+26         
+27         
+28         <span class="ST5">bsf</span> <span class="ST7">PORTD</span>,<span class="ST3">RD2</span> <span class="ST2">; Seta o bit RD2 da PORTD para 1</span>
+29                 <span class="ST5">CALL</span> <span class="ST3">Periodo1ms</span> <span class="ST2">;Gera um periodo de 1ms</span>
+30                 <span class="ST5">nop</span><span class="ST2">; Consome um tempo de 1us</span>
+31         <span class="ST5">bcf</span> <span class="ST7">PORTD</span>,<span class="ST3">RD2</span> <span class="ST2">;Seta o bit RD2 da PORTD para 0</span>
+32         
+33         <span class="ST5">bsf</span> <span class="ST7">PORTD</span>,<span class="ST3">RD3</span> <span class="ST2">;Seta o bit RD3 da PORTD para 1</span>
+34                 <span class="ST5">CALL</span> <span class="ST3">Periodo1ms</span> <span class="ST2">;Gera um periodo de 1ms</span>
+35                 <span class="ST5">nop</span><span class="ST2">; Consome um tempo de 1us</span>
+36         <span class="ST5">bcf</span> <span class="ST7">PORTD</span>,<span class="ST3">RD3</span> <span class="ST2">;Seta o bit RD03 da PORTD para 0</span>
+37         
+38         
+39         <span class="ST5">GOTO</span> <span class="ST3">LOOP</span><span class="ST2">; Vai para o LOOP, gerando um loop</span>
+40             <span class="ST3">Periodo1ms</span> <span class="ST2">; Gera um periodo de quase 1ms</span>
+41                 <span class="ST5">MOVLW</span> <span class="ST3">.10</span> <span class="ST2">; Poem o literal 62(decimal) no registrador W</span>
+42                 <span class="ST5">MOVWF</span> <span class="ST3">ContaPeriodo1ms</span> <span class="ST2">;Move o valor do registrador W para a variavel ContaPeriodo1ms</span>
+43             <span class="ST3">LOOP2</span>      <span class="ST2">; Loop que ira gerar o periodo de 1s</span>
+44                         <span class="ST5">NOP</span><span class="ST2">;Consome 1us</span>
+45                         <span class="ST5">NOP</span>
+46                         <span class="ST5">NOP</span>
+47                         <span class="ST5">NOP</span>
+48                         <span class="ST5">NOP</span>
+49                         <span class="ST5">NOP</span>
+50                         <span class="ST5">NOP</span>
+51                         <span class="ST5">NOP</span>
+52                         <span class="ST5">NOP</span>
+53                         <span class="ST5">NOP</span>
+54                 <span class="ST5">DECFSZ</span> <span class="ST3">ContaPeriodo1ms</span> <span class="ST2">; Diminui em 1 o valor de ContaPeriodo1ms</span>
+55             <span class="ST2">;Caso o valor de ContaPeriodo1ms seja 0, a proxima linha é pulada</span>
+56             <span class="ST5">GOTO</span> <span class="ST3">LOOP2</span>  <span class="ST2">; Repete estes comandos até que ContaPeriodo1ms seja 0</span>
+57     <span class="ST5">RETURN</span>
+58 
+59 
+60     <span class="ST4">END</span>
 </pre></body>
 </html>

@@ -8,13 +8,91 @@
 body {color: #000000; background-color: #ffffff; font-family: Monospaced}
 pre {color: #000000; background-color: #ffffff; font-family: Monospaced}
 table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
-.ST0 {color: #009600}
+.ST0 {color: #009600; background-color: #e9eff8}
+.ST6 {color: #009be1}
+.ST4 {color: #009600}
+.ST3 {color: #99006b}
+.ST5 {color: #00009b; font-family: Monospaced; font-weight: bold}
+.ST1 {color: #0000ff}
+.ST2 {color: #ce7b00}
 -->
 </style>
 </head>
 <body>
 <table width="100%"><tr><td align="center">C:\Users\carlos\MPLABXProjects\questao04_parte01.X\questao04.asm</td></tr></table>
 <pre>
-17 <span class="ST0">de W</span>
+ 1 <span class="ST0">; TODO INSERT CONFIG CODE HERE USING CONFIG BITS GENERATOR</span>
+ 2 <span class="ST1">#include</span> <span class="ST2">&lt;p18f4550.inc&gt;</span>
+ 3     
+ 4 <span class="ST3">RES_VECT</span>  <span class="ST1">CODE</span>    0x0000            <span class="ST4">; processor reset vector</span>
+ 5     <span class="ST5">GOTO</span>    <span class="ST3">START</span>                   <span class="ST4">; go to beginning of program</span>
+ 6 
+ 7 <span class="ST4">; TODO ADD INTERRUPTS HERE IF USED</span>
+ 8 
+ 9 <span class="ST3">MAIN_PROG</span> <span class="ST1">CODE</span>                      <span class="ST4">; let linker place main program</span>
+10 
+11 <span class="ST3">START</span>
+12 
+13     <span class="ST5">MOVLW</span> <span class="ST3">d</span><span class="ST2">&#39;10&#39;</span>         <span class="ST4">; coloca o valor de A no registro W</span>
+14     <span class="ST5">MOVWF</span> <span class="ST3">h</span><span class="ST2">&#39;02&#39;</span>         <span class="ST4">; coloca valor de W na posiçao 2 de memória RAM</span>
+15     
+16     <span class="ST5">MOVLW</span> <span class="ST3">d</span><span class="ST2">&#39;20&#39;</span>         <span class="ST4">; coloca o valor de A no registro W</span>
+17     <span class="ST5">MOVWF</span> <span class="ST3">h</span><span class="ST2">&#39;04&#39;</span>         <span class="ST4">; coloca valor de W na posiçao 2 dA memória RAM</span>
+18     
+19     <span class="ST5">MOVLW</span> <span class="ST3">d</span><span class="ST2">&#39;40&#39;</span>         <span class="ST4">; coloca o valor de A no registro W</span>
+20     <span class="ST5">MOVWF</span> <span class="ST3">h</span><span class="ST2">&#39;06&#39;</span>         <span class="ST4">; coloca valor de W na posiçao 2 de memória RAM</span>
+21     
+22     <span class="ST5">MOVF</span> <span class="ST3">h</span><span class="ST2">&#39;02&#39;</span>,<span class="ST3">W</span>        <span class="ST4">; coloca o valor da posição 2 de memoria para W</span>
+23     <span class="ST5">SUBWF</span> <span class="ST3">h</span><span class="ST2">&#39;04&#39;</span>,<span class="ST3">W</span>       <span class="ST4">; W = h&#39;04&#39; - W</span>
+24     <span class="ST5">BTFSC</span> <span class="ST6">STATUS</span>,<span class="ST3">C</span>      <span class="ST4">;testa 6 bit C de status --&gt; RESULTADO = 0 pula uma linha</span> 
+25     <span class="ST5">GOTO</span> <span class="ST3">MENOR</span>
+26     <span class="ST5">BTFSS</span> <span class="ST6">STATUS</span>,<span class="ST3">Z</span>      <span class="ST4">; RESULTADO = 1 pula uma linha</span>
+27     <span class="ST5">GOTO</span> <span class="ST3">MAIOR</span>
+28     <span class="ST5">GOTO</span> <span class="ST3">IGUAL</span>
+29 
+30 <span class="ST3">IGUAL</span>
+31     <span class="ST5">MOVFF</span> <span class="ST3">h</span><span class="ST2">&#39;02&#39;</span>,<span class="ST3">h</span><span class="ST2">&#39;10&#39;</span>   <span class="ST4">; h&#39;02&#39;&gt; h&#39;04&#39; --&gt; resultado colocado na posicao 8 de memoria ram (NUMEROS IGUAIS)</span>
+32     <span class="ST5">MOVFF</span> <span class="ST3">h</span><span class="ST2">&#39;04&#39;</span>,<span class="ST3">h</span><span class="ST2">&#39;08&#39;</span>   <span class="ST4">; h&#39;02&#39;&lt; h&#39;04&#39; --&gt; resultado colocado na posicao 4 de memoria ram (NUMEROS IGUAIS)</span>
+33     <span class="ST5">MOVF</span> <span class="ST3">h</span><span class="ST2">&#39;06&#39;</span>,<span class="ST3">W</span>        <span class="ST4">; coloca o valor da posição 6 de memoria para W</span>
+34     <span class="ST5">SUBWF</span> <span class="ST3">h</span><span class="ST2">&#39;10&#39;</span>,<span class="ST3">W</span>       <span class="ST4">; W = h&#39;10&#39; - W</span>
+35     <span class="ST5">BTFSC</span> <span class="ST6">STATUS</span>,<span class="ST3">C</span>      <span class="ST4">;testa 6 bit C de status --&gt; RESULTADO = 0 pula uma linha</span> 
+36     <span class="ST5">GOTO</span> <span class="ST3">ATUALIZA_MENOR</span>
+37     <span class="ST5">BTFSS</span> <span class="ST6">STATUS</span>,<span class="ST3">Z</span>      <span class="ST4">; RESULTADO = 1 pula uma linha</span>
+38     <span class="ST5">MOVFF</span> <span class="ST3">h</span><span class="ST2">&#39;06&#39;</span>,<span class="ST3">h</span><span class="ST2">&#39;10&#39;</span>   <span class="ST4">; atualiza o valor maior --&gt; resultado colocado na posicao 10 de memoria ram (NUMERO MAIOR)</span>
+39     <span class="ST5">NOP</span>
+40    
+41     
+42 <span class="ST3">MAIOR</span> 
+43     <span class="ST5">MOVFF</span> <span class="ST3">h</span><span class="ST2">&#39;02&#39;</span>,<span class="ST3">h</span><span class="ST2">&#39;10&#39;</span>   <span class="ST4">; h&#39;02&#39;&gt; h&#39;04&#39; --&gt; resultado colocado na posicao 8 de memoria ram (NUMERO MAIOR)</span>
+44     <span class="ST5">MOVFF</span> <span class="ST3">h</span><span class="ST2">&#39;04&#39;</span>,<span class="ST3">h</span><span class="ST2">&#39;08&#39;</span>   <span class="ST4">; h&#39;02&#39;&lt; h&#39;04&#39; --&gt; resultado colocado na posicao 4 de memoria ram (NUMERO MENOR)</span>
+45     <span class="ST5">MOVF</span> <span class="ST3">h</span><span class="ST2">&#39;06&#39;</span>,<span class="ST3">W</span>        <span class="ST4">; coloca o valor da posição 6 de memoria para W</span>
+46     <span class="ST5">SUBWF</span> <span class="ST3">h</span><span class="ST2">&#39;10&#39;</span>,<span class="ST3">W</span>       <span class="ST4">; W = h&#39;10&#39; - W</span>
+47     <span class="ST5">BTFSC</span> <span class="ST6">STATUS</span>,<span class="ST3">C</span>      <span class="ST4">;testa 6 bit C de status --&gt; RESULTADO = 0 pula uma linha</span> 
+48     <span class="ST5">GOTO</span> <span class="ST3">ATUALIZA_MENOR</span>
+49     <span class="ST5">BTFSS</span> <span class="ST6">STATUS</span>,<span class="ST3">Z</span>      <span class="ST4">; RESULTADO = 1 pula uma linha</span>
+50     <span class="ST5">MOVFF</span> <span class="ST3">h</span><span class="ST2">&#39;06&#39;</span>,<span class="ST3">h</span><span class="ST2">&#39;10&#39;</span>   <span class="ST4">; atualiza o valor maior --&gt; resultado colocado na posicao 10 de memoria ram (NUMERO MAIOR)</span>
+51     
+52     
+53 <span class="ST3">MENOR</span>
+54     <span class="ST5">MOVFF</span> <span class="ST3">h</span><span class="ST2">&#39;02&#39;</span>,<span class="ST3">h</span><span class="ST2">&#39;08&#39;</span>   <span class="ST4">; h&#39;02&#39;&lt; h&#39;04&#39; --&gt; resultado colocado na posicao 8 de memoria ram (NUMERO MENOR)</span>
+55     <span class="ST5">MOVFF</span> <span class="ST3">h</span><span class="ST2">&#39;04&#39;</span>,<span class="ST3">h</span><span class="ST2">&#39;10&#39;</span>   <span class="ST4">; h&#39;02&#39;&gt; h&#39;04&#39; --&gt; resultado colocado na posicao 4 de memoria ram (NUMERO MAIOR)</span>
+56     <span class="ST5">MOVF</span> <span class="ST3">h</span><span class="ST2">&#39;06&#39;</span>,<span class="ST3">W</span>        <span class="ST4">; coloca o valor da posição 6 de memoria para W</span>
+57     <span class="ST5">SUBWF</span> <span class="ST3">h</span><span class="ST2">&#39;10&#39;</span>,<span class="ST3">W</span>       <span class="ST4">; W = h&#39;10&#39; - W</span>
+58     <span class="ST5">BTFSC</span> <span class="ST6">STATUS</span>,<span class="ST3">C</span>      <span class="ST4">;testa 6 bit C de status --&gt; RESULTADO = 0 pula uma linha</span> 
+59     <span class="ST5">GOTO</span> <span class="ST3">ATUALIZA_MENOR</span>
+60     <span class="ST5">BTFSS</span> <span class="ST6">STATUS</span>,<span class="ST3">Z</span>      <span class="ST4">; RESULTADO = 1 pula uma linha</span>
+61     <span class="ST5">MOVFF</span> <span class="ST3">h</span><span class="ST2">&#39;06&#39;</span>,<span class="ST3">h</span><span class="ST2">&#39;10&#39;</span>   <span class="ST4">; atualiza o valor maior --&gt; resultado colocado na posicao 10 de memoria ram (NUMERO MAIOR)</span>
+62     
+63       
+64 <span class="ST3">ATUALIZA_MENOR</span>          <span class="ST4">; Verifica se o (MENOR) &lt; que h&#39;06&#39;</span> 
+65     <span class="ST5">MOVF</span> <span class="ST3">h</span><span class="ST2">&#39;06&#39;</span>,<span class="ST3">W</span>        <span class="ST4">; coloca o valor da posição 6 de memoria para W</span>
+66     <span class="ST5">SUBWF</span> <span class="ST3">h</span><span class="ST2">&#39;08&#39;</span>,<span class="ST3">W</span>       <span class="ST4">; W = h&#39;08&#39; - W --&gt; testando s eo valor da posição 6 é menor que o resultado anterior(MENOR)</span>
+67     <span class="ST5">BTFSC</span> <span class="ST6">STATUS</span>,<span class="ST3">C</span>      <span class="ST4">;testa 6 bit C de status --&gt; RESULTADO = 0 pula uma linha</span>
+68     <span class="ST5">MOVFF</span> <span class="ST3">h</span><span class="ST2">&#39;06&#39;</span>,<span class="ST3">h</span><span class="ST2">&#39;08&#39;</span>   <span class="ST4">; h&#39;06&#39;&lt; h&#39;02&#39; --&gt; resultado colocado na posicao 8 de memoria ram (NUMERO MENOR)</span>
+69 
+70     <span class="ST1">END</span>
+71     
+72 
+73     
 </pre></body>
 </html>
