@@ -15,14 +15,14 @@ VARIAVEIS UDATA_ACS 0x20
 MAIN_PROG CODE     ; let linker place main program
 
 START
-    ;inicializa dividendo: 2312h = 8978
-    MOVLW h'12'
+    ;inicializa dividendo: 3315h = 13017
+    MOVLW h'15'
     MOVWF v1
-    MOVLW h'23'
+    MOVLW h'33'
     MOVWF v1+1
     
-    ;inicializa divisor: 28h = 43
-    MOVLW h'2B'
+    ;inicializa divisor: 1Bh = 27
+    MOVLW h'1B'
     MOVWF v2
     NOP
     CALL DIV_16 ; chama a rotina para dividir

@@ -23,9 +23,9 @@ table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
  1     <span class="ST0">; TODO INSERT CONFIG CODE HERE USING CONFIG BITS GENERATOR</span>
  2 
  3 <span class="ST1">variaveis</span> <span class="ST2">udata_acs</span> 0x20  <span class="ST3">;reservando espaço de memória para as variaveis</span>
- 4     <span class="ST1">A</span> <span class="ST2">RES</span> 2    <span class="ST3">;variavel de 16bits</span>
- 5     <span class="ST1">B</span> <span class="ST2">RES</span> 2    <span class="ST3">;variavel de 16bits</span>
- 6     <span class="ST1">RESULTADO</span> <span class="ST2">RES</span> 2         <span class="ST3">;resultado de 16bits</span>
+ 4     <span class="ST1">A</span> <span class="ST2">RES</span> 2          <span class="ST3">;variavel de 16bits</span>
+ 5     <span class="ST1">B</span> <span class="ST2">RES</span> 2          <span class="ST3">;variavel de 16bits</span>
+ 6     <span class="ST1">RESULTADO</span> <span class="ST2">RES</span> 2  <span class="ST3">;resultado de 16bits</span>
  7 
  8     
  9 <span class="ST1">RES_VECT</span>  <span class="ST2">CODE</span>    0x0000            <span class="ST3">; processor reset vector</span>
@@ -37,34 +37,30 @@ table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
 15 
 16 <span class="ST1">START</span>
 17  
-18     <span class="ST3">;ajustando os valores das variaveis</span>
-19     <span class="ST4">MOVLW</span> 0xFF  <span class="ST3">;numero arbtrario da parte menos significativa</span>
-20     <span class="ST4">MOVWF</span> <span class="ST1">A</span>     <span class="ST3">;menos significativo da variavel A</span>
-21     
-22     <span class="ST4">MOVLW</span> 0xFF  <span class="ST3">;numero arbtrario da parte mais significativa</span>
-23     <span class="ST4">MOVWF</span> <span class="ST1">A</span>+1   <span class="ST3">;mais significativo da variavel A</span>
-24     
-25     <span class="ST4">MOVLW</span> 0xFF  <span class="ST3">;numero arbtrario da parte menos significativa</span>
-26     <span class="ST4">MOVWF</span> <span class="ST1">B</span>     <span class="ST3">;menos significativo da variavel B</span>
-27     
-28     <span class="ST4">MOVLW</span> 0xFF  <span class="ST3">;numero arbtrario da parte mais significativa</span>
-29     <span class="ST4">MOVWF</span> <span class="ST1">B</span>+1   <span class="ST3">;mais significativo da variavel B</span>
-30  
-31     <span class="ST4">MOVLW</span> 0x00
-32     
-33     <span class="ST4">NOP</span>                 <span class="ST3">;ultilizado para parar utilizando o debuger</span>
-34     
-35     <span class="ST4">MOVF</span> <span class="ST1">A</span>, 0           <span class="ST3">;move o valor armazenado em A para W</span>
-36     <span class="ST4">ADDWF</span> <span class="ST1">B</span>             <span class="ST3">;soma B e W e armazena em B</span>
-37     <span class="ST4">MOVF</span> <span class="ST1">B</span>, 0           <span class="ST3">; o valor armazenado em B é movido para W</span>
-38     <span class="ST4">MOVWF</span> <span class="ST1">RESULTADO</span>     <span class="ST3">; o valor armazenado em W é movido para RESULTADO</span>
-39     
-40     <span class="ST4">MOVF</span> <span class="ST1">A</span>+1, 0 <span class="ST3">;move o valor armazenado em A+1 para W</span>
-41     <span class="ST4">ADDWFC</span> <span class="ST1">B</span>+1          <span class="ST3">;soma B+1 e W e armazena em B+1</span>
-42     <span class="ST4">MOVF</span> <span class="ST1">B</span>+1, 0 <span class="ST3">;move o valor armazenado em B+1 para W</span>
-43     <span class="ST4">MOVWF</span> <span class="ST1">RESULTADO</span>+1   <span class="ST3">;move o valor armazenado em W para RESULTADO+1</span>
-44 
-45     <span class="ST4">NOP</span>
-46     <span class="ST2">END</span>
+18     <span class="ST4">MOVLW</span> 0x7   <span class="ST3">;numero parte menos significativa</span>
+19     <span class="ST4">MOVWF</span> <span class="ST1">A</span>     <span class="ST3">;menos significativo da variavel A</span>
+20     
+21     <span class="ST4">MOVLW</span> 0xF8  <span class="ST3">;numero parte mais significativa</span>
+22     <span class="ST4">MOVWF</span> <span class="ST1">A</span>+1   <span class="ST3">;mais significativo da variavel A</span>
+23     
+24     <span class="ST4">MOVLW</span> 0x2   <span class="ST3">;numero parte menos significativa</span>
+25     <span class="ST4">MOVWF</span> <span class="ST1">B</span>     <span class="ST3">;menos significativo da variavel B</span>
+26     
+27     <span class="ST4">MOVLW</span> 0xBC  <span class="ST3">;numero parte mais significativa</span>
+28     <span class="ST4">MOVWF</span> <span class="ST1">B</span>+1   <span class="ST3">;mais significativo da variavel B</span>
+29  
+30     <span class="ST4">MOVLW</span> 0x00
+31     
+32     <span class="ST4">NOP</span>                 
+33     
+34     <span class="ST4">MOVF</span> <span class="ST1">A</span>,<span class="ST1">W</span>            <span class="ST3">;move o valor armazenado em A para W</span>
+35     <span class="ST4">ADDWF</span> <span class="ST1">B</span>,<span class="ST1">W</span>           <span class="ST3">;soma B e W e armazena em W</span>
+36     <span class="ST4">MOVWF</span> <span class="ST1">RESULTADO</span>     <span class="ST3">; o valor armazenado em W é movido para RESULTADO</span>
+37     
+38     <span class="ST4">MOVF</span> <span class="ST1">A</span>+1,<span class="ST1">W</span>          <span class="ST3">;move o valor armazenado em A+1 para W</span>
+39     <span class="ST4">ADDWFC</span> <span class="ST1">B</span>+1,<span class="ST1">W</span>        <span class="ST3">;soma B+1 e W e armazena em W</span>
+40     <span class="ST4">MOVWF</span> <span class="ST1">RESULTADO</span>+1   <span class="ST3">;move o valor armazenado em W para RESULTADO+1</span>
+41 
+42     <span class="ST2">END</span>
 </pre></body>
 </html>

@@ -1,12 +1,12 @@
 MPLINK 5.09, LINKER
-Linker Map File - Created Mon Dec 13 17:55:36 2021
+Linker Map File - Created Sun Dec 19 12:46:31 2021
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
                  RES_VECT       code   0x000000    program   0x000004
                    .cinit    romdata   0x000004    program   0x000002
-                MAIN_PROG       code   0x000006    program   0x00004a
+                MAIN_PROG       code   0x000006    program   0x000046
                 VARIAVEIS      udata   0x000000       data   0x000000
 
 
@@ -14,8 +14,8 @@ Linker Map File - Created Mon Dec 13 17:55:36 2021
                               Program Memory Usage 
                                Start         End      
                            ---------   ---------      
-                            0x000000    0x00004f      
-            80 out of 33048 program addresses used, program memory utilization is 0%
+                            0x000000    0x00004b      
+            76 out of 33048 program addresses used, program memory utilization is 0%
 
 
 
@@ -24,9 +24,9 @@ Linker Map File - Created Mon Dec 13 17:55:36 2021
                 ---------  ---------  ---------  --------- ---------                
                      LOOP   0x00000a    program     static C:\Users\carlos\MPLABXProjects\gerador_sinais.X\gerador_sinais_parte02.asm
                     LOOP2   0x000030    program     static C:\Users\carlos\MPLABXProjects\gerador_sinais.X\gerador_sinais_parte02.asm
-               Periodo1ms   0x00002c    program     static C:\Users\carlos\MPLABXProjects\gerador_sinais.X\gerador_sinais_parte02.asm
+              Periodo10us   0x00002c    program     static C:\Users\carlos\MPLABXProjects\gerador_sinais.X\gerador_sinais_parte02.asm
                     START   0x000006    program     static C:\Users\carlos\MPLABXProjects\gerador_sinais.X\gerador_sinais_parte02.asm
-          ContaPeriodo1ms   0x000000       data     static C:\Users\carlos\MPLABXProjects\gerador_sinais.X\gerador_sinais_parte02.asm
+        ContaPeriodo100us   0x000000       data     static C:\Users\carlos\MPLABXProjects\gerador_sinais.X\gerador_sinais_parte02.asm
 
 
 
@@ -35,8 +35,8 @@ Linker Map File - Created Mon Dec 13 17:55:36 2021
                 ---------  ---------  ---------  --------- ---------                
                     START   0x000006    program     static C:\Users\carlos\MPLABXProjects\gerador_sinais.X\gerador_sinais_parte02.asm
                      LOOP   0x00000a    program     static C:\Users\carlos\MPLABXProjects\gerador_sinais.X\gerador_sinais_parte02.asm
-               Periodo1ms   0x00002c    program     static C:\Users\carlos\MPLABXProjects\gerador_sinais.X\gerador_sinais_parte02.asm
+              Periodo10us   0x00002c    program     static C:\Users\carlos\MPLABXProjects\gerador_sinais.X\gerador_sinais_parte02.asm
                     LOOP2   0x000030    program     static C:\Users\carlos\MPLABXProjects\gerador_sinais.X\gerador_sinais_parte02.asm
-          ContaPeriodo1ms   0x000000       data     static C:\Users\carlos\MPLABXProjects\gerador_sinais.X\gerador_sinais_parte02.asm
+        ContaPeriodo100us   0x000000       data     static C:\Users\carlos\MPLABXProjects\gerador_sinais.X\gerador_sinais_parte02.asm
 
 

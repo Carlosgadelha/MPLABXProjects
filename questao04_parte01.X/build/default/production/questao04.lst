@@ -1,4 +1,4 @@
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE  1
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                             MERO MAIOR)
 000038 0000           00039     NOP
                       00040    
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE  2
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -96,7 +96,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 000070 C006 F008      00068     MOVFF h'06',h'08'   ; h'06'< h'02' --> resultado colocado na posicao 8 de memoria ram (NUMERO MENOR)
                       00069 
                       00070     END
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE  3
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE  3
 
 
 SYMBOL TABLE
@@ -155,7 +155,7 @@ BOR                               00000000
 BRG16                             00000003
 BRGH                              00000002
 BSR                               00000FE0
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE  4
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE  4
 
 
 SYMBOL TABLE
@@ -214,7 +214,7 @@ CM1                               00000001
 CM2                               00000002
 CMCON                             00000FB4
 CMIE                              00000006
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE  5
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE  5
 
 
 SYMBOL TABLE
@@ -273,7 +273,7 @@ EEIF                              00000004
 EEIP                              00000004
 EEPGD                             00000007
 ENDP0                             00000003
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE  6
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE  6
 
 
 SYMBOL TABLE
@@ -332,7 +332,7 @@ HLVDL2                            00000002
 HLVDL3                            00000003
 I2C_DAT                           00000005
 I2C_READ                          00000002
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE  7
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE  7
 
 
 SYMBOL TABLE
@@ -391,7 +391,7 @@ LATA4                             00000004
 LATA5                             00000005
 LATA6                             00000006
 LATB                              00000F8A
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE  8
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE  8
 
 
 SYMBOL TABLE
@@ -450,7 +450,7 @@ NOT_PD                            00000002
 NOT_POR                           00000001
 NOT_RBPU                          00000007
 NOT_RI                            00000004
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE  9
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE  9
 
 
 SYMBOL TABLE
@@ -509,7 +509,7 @@ PLUSW1                            00000FE3
 PLUSW2                            00000FDB
 POR                               00000001
 PORTA                             00000F80
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE 10
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE 10
 
 
 SYMBOL TABLE
@@ -568,7 +568,7 @@ RC2                               00000002
 RC4                               00000004
 RC5                               00000005
 RC6                               00000006
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE 11
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE 11
 
 
 SYMBOL TABLE
@@ -627,7 +627,7 @@ SPEN                              00000007
 SPP0                              00000000
 SPP1                              00000001
 SPP2                              00000002
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE 12
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE 12
 
 
 SYMBOL TABLE
@@ -686,7 +686,7 @@ T0CON                             00000FD5
 T0CS                              00000005
 T0IE                              00000005
 T0IF                              00000002
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE 13
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE 13
 
 
 SYMBOL TABLE
@@ -745,7 +745,7 @@ TMR2IE                            00000001
 TMR2IF                            00000001
 TMR2IP                            00000001
 TMR2ON                            00000002
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE 14
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE 14
 
 
 SYMBOL TABLE
@@ -804,7 +804,7 @@ TRISE                             00000F96
 TRISE0                            00000000
 TRISE1                            00000001
 TRISE2                            00000002
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE 15
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE 15
 
 
 SYMBOL TABLE
@@ -863,7 +863,7 @@ URSTIE                            00000000
 URSTIF                            00000000
 USBEN                             00000003
 USBIE                             00000005
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE 16
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE 16
 
 
 SYMBOL TABLE
@@ -922,7 +922,7 @@ _CP1_ON_5L                        000000FD
 _CP2_OFF_5L                       000000FF
 _CP2_ON_5L                        000000FB
 _CP3_OFF_5L                       000000FF
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE 17
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE 17
 
 
 SYMBOL TABLE
@@ -981,7 +981,7 @@ _LPT1OSC_OFF_3H                   000000FB
 _LPT1OSC_ON_3H                    000000FF
 _LVP_OFF_4L                       000000FB
 _LVP_ON_4L                        000000FF
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE 18
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE 18
 
 
 SYMBOL TABLE
@@ -1040,7 +1040,7 @@ _WRTC_ON_6H                       000000DF
 _WRTD_OFF_6H                      000000FF
 _WRTD_ON_6H                       0000007F
 _XINST_OFF_4L                     000000BF
-MPASM 5.86                     QUESTAO04.ASM   12-9-2021  20:21:34         PAGE 19
+MPASM 5.86                     QUESTAO04.ASM   12-19-2021  13:35:17         PAGE 19
 
 
 SYMBOL TABLE

@@ -10,13 +10,13 @@ MAIN_PROG CODE                      ; let linker place main program
 
 START
 
-    MOVLW d'10'		; coloca o valor de A no registro W
+    MOVLW d'90'		; coloca o valor de A no registro W
     MOVWF h'02'         ; coloca valor de W na posiçao 2 de memória RAM
     
-    MOVLW d'20'		; coloca o valor de A no registro W
+    MOVLW d'69'		; coloca o valor de A no registro W
     MOVWF h'04'         ; coloca valor de W na posiçao 2 dA memória RAM
     
-    MOVLW d'40'		; coloca o valor de A no registro W
+    MOVLW d'09'		; coloca o valor de A no registro W
     MOVWF h'06'         ; coloca valor de W na posiçao 2 de memória RAM
     
     MOVF h'02',W        ; coloca o valor da posição 2 de memoria para W

@@ -14,7 +14,8 @@ MAIN_PROG CODE                      ; let linker place main program
 
 START
 
-    MOVLW  0x33        ;coloca o valor  no registro W
+    MOVLW  d'100'       ;coloca o VALOR 12 no registro W
+    MOVFF  d'0',CONT    ;inicia a variavel CONT com zero
     MOVWF NUMERO       ;coloca valor de W na posiçao NUMERO da memória RAM
     
     BTFSC NUMERO, 0    ; se o bit 0 de NUMERO for zero a proxima instrução sera pulada 

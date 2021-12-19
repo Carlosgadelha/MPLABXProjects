@@ -1,10 +1,10 @@
 #include "p18f4550.inc"
-    ; Matricula = 500149
+    ; Matricula = 389110
     ; T = 100 + 100N
-    ; Como N é o último número da matrícula, N=9
-    ; T = 100 + 100*9 = 1000us = 1ms
+    ; Como N  = 0 --> T = 100 us
+
 VARIAVEIS UDATA_ACS 0
-      ContaPeriodo1ms ;Variavel para dar um periodo de 1ms
+      ContaPeriodo100us ;Variavel para dar um periodo de 100us
  
 RES_VECT  CODE    0x0000            
 	GOTO START
@@ -20,27 +20,27 @@ START
 	    ;GERADOR DE FORMA DE ONDA DA FIGURA
     LOOP ; Loop principal
 	bsf PORTD,RD1; Seta o bit RD1 da PORTD para 1
-		CALL Periodo1ms ;Gera um periodo de 1ms
+		CALL Periodo10us ;Gera um periodo de 1ms
 		nop; Consome um tempo de 1us
 	bcf PORTD,RD1 ; Seta o bit RD1 da PORTD para 0
 	
 	
 	bsf PORTD,RD2 ; Seta o bit RD2 da PORTD para 1
-		CALL Periodo1ms ;Gera um periodo de 1ms
+		CALL Periodo10us ;Gera um periodo de 1ms
 		nop; Consome um tempo de 1us
 	bcf PORTD,RD2 ;Seta o bit RD2 da PORTD para 0
 	
 	bsf PORTD,RD3 ;Seta o bit RD3 da PORTD para 1
-		CALL Periodo1ms ;Gera um periodo de 1ms
+		CALL Periodo10us ;Gera um periodo de 1ms
 		nop; Consome um tempo de 1us
 	bcf PORTD,RD3 ;Seta o bit RD03 da PORTD para 0
 	
 	
 	GOTO LOOP; Vai para o LOOP, gerando um loop
-	    Periodo1ms ; Gera um periodo de quase 1ms
-		MOVLW .10 ; Poem o literal 62(decimal) no registrador W
-		MOVWF ContaPeriodo1ms ;Move o valor do registrador W para a variavel ContaPeriodo1ms
-	    LOOP2      ; Loop que ira gerar o periodo de 1s
+	    Periodo10us ; Gera um periodo de quase 1ms
+		MOVLW .10 ; Poem o literal 10(decimal) no registrador W
+		MOVWF ContaPeriodo100us ;Move o valor do registrador W para a variavel ContaPeriodo100us
+	    LOOP2      ; Loop que ira gerar o periodo de 10us
 			NOP;Consome 1us
 			NOP
 			NOP
@@ -51,7 +51,7 @@ START
 			NOP
 			NOP
 			NOP
-		DECFSZ ContaPeriodo1ms ; Diminui em 1 o valor de ContaPeriodo1ms
+		DECFSZ ContaPeriodo100us ; Diminui em 1 o valor de ContaPeriodo1ms
 	    ;Caso o valor de ContaPeriodo1ms seja 0, a proxima linha é pulada
 	    GOTO LOOP2  ; Repete estes comandos até que ContaPeriodo1ms seja 0
     RETURN

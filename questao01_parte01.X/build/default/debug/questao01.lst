@@ -1,4 +1,4 @@
-MPASM 5.86                     QUESTAO01.ASM   12-18-2021  11:06:55         PAGE  1
+MPASM 5.86                     QUESTAO01.ASM   12-19-2021  17:47:46         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -25,35 +25,33 @@ Warning[207]: Found label after column 1. (RESULTADO)
 000000                00016 START
                       00017  
                       00018     ;ajustando os valores das variaveis
-000000 0EFF           00019     MOVLW 0xFF  ;numero arbtrario da parte menos significativa
+000000 0E07           00019     MOVLW 0x7   ;numero arbtrario da parte menos significativa
 000002 6E??           00020     MOVWF A     ;menos significativo da variavel A
                       00021     
-000004 0EFF           00022     MOVLW 0xFF  ;numero arbtrario da parte mais significativa
+000004 0EF8           00022     MOVLW 0xF8  ;numero arbtrario da parte mais significativa
 000006 6E??           00023     MOVWF A+1   ;mais significativo da variavel A
                       00024     
-000008 0EFF           00025     MOVLW 0xFF  ;numero arbtrario da parte menos significativa
+000008 0E02           00025     MOVLW 0x2   ;numero arbtrario da parte menos significativa
 00000A 6E??           00026     MOVWF B     ;menos significativo da variavel B
                       00027     
-00000C 0EFF           00028     MOVLW 0xFF  ;numero arbtrario da parte mais significativa
+00000C 0EBC           00028     MOVLW 0xBC  ;numero arbtrario da parte mais significativa
 00000E 6E??           00029     MOVWF B+1   ;mais significativo da variavel B
                       00030  
 000010 0E00           00031     MOVLW 0x00
                       00032     
 000012 0000           00033     NOP                 ;ultilizado para parar utilizando o debuger
                       00034     
-000014 5000           00035     MOVF A, 0           ;move o valor armazenado em A para W
-000016 26??           00036     ADDWF B             ;soma B e W e armazena em B
-000018 5000           00037     MOVF B, 0           ; o valor armazenado em B é movido para W
-00001A 6E??           00038     MOVWF RESULTADO     ; o valor armazenado em W é movido para RESULTADO
-                      00039     
-00001C 5000           00040     MOVF A+1, 0 ;move o valor armazenado em A+1 para W
-00001E 22??           00041     ADDWFC B+1          ;soma B+1 e W e armazena em B+1
-000020 5000           00042     MOVF B+1, 0 ;move o valor armazenado em B+1 para W
-000022 6E??           00043     MOVWF RESULTADO+1   ;move o valor armazenado em W para RESULTADO+1
-                      00044 
-000024 0000           00045     NOP
-                      00046     END
-MPASM 5.86                     QUESTAO01.ASM   12-18-2021  11:06:55         PAGE  2
+000014 50??           00035     MOVF A,W            ;move o valor armazenado em A para W
+000016 24??           00036     ADDWF B,W           ;soma B e W e armazena em W
+000018 6E??           00037     MOVWF RESULTADO     ; o valor armazenado em W é movido para RESULTADO
+                      00038     
+00001A 50??           00039     MOVF A+1,W  ;move o valor armazenado em A+1 para W
+00001C 20??           00040     ADDWFC B+1,W                ;soma B+1 e W e armazena em W
+00001E 6E??           00041     MOVWF RESULTADO+1   ;move o valor armazenado em W para RESULTADO+1
+                      00042 
+000020 0000           00043     NOP
+                      00044     END
+MPASM 5.86                     QUESTAO01.ASM   12-19-2021  17:47:46         PAGE  2
 
 
 SYMBOL TABLE
