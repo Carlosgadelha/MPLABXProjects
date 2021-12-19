@@ -1,3 +1,0 @@
-build/default/debug/questao01.o:  \
-	C:/Users/carlos/MPLABXProjects/trabalho_01.X/questao01.asm  \
-
